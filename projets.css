@@ -29,7 +29,13 @@ body{
 .menuitem { padding: 1em .5em; }
 .menuitem a{
  text-decoration: none;/*sert à enlever la décoration par défaut du texte, notamment les soulignements.*/
- color: #420125;
+ background: linear-gradient(to right, #f5dae9, #f583c2, #69063d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text; /* Pour compatibilité éventuelle */
+  color: transparent;
+  margin-bottom: 20px;
+  font-size: 19px;
  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 a:hover {

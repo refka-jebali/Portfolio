@@ -4,7 +4,7 @@ Les backticks (`) permettent d’écrire sur plusieurs lignes (template literals
 const menuHTML = `
 <nav id="navigation">
   <ul class="menu">
-    <li class="menuitem"><a href="accueil.html">Accueil</a></li>
+    <li class="menuitem"><a href="index.html">Accueil</a></li>
     <li class="menuitem"><a href="apropos.html">Services</a></li>
     <li class="menuitem"><a href="portfolio.html">Portfolio</a></li>
     <li class="menuitem cta"><a href="contact.html">Contact</a></li>
