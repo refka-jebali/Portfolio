@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="projets.css">
+</head>
+<body>
+  <div id="menu"></div>
+  <section class="contact-section">
+<h1>Contactez-nous</h1>
+<section>
+    <form class="check-form">
+  <label class="custom-checkbox">
+    <input type="checkbox">
+    <span class="check-content">Site web</span>
+  </label>
+  <label class="custom-checkbox">
+    <input type="checkbox">
+    <span class="check-content">Application mobile</span>
+  </label> <br>
+  <label class="custom-checkbox">
+    <input type="checkbox">
+    <span class="check-content">Design</span>
+  </label>
+  <label class="custom-checkbox">
+    <input type="checkbox">
+    <span class="check-content">Code</span>
+  </label>
+</form>
+  </section>
+<form class="contact-form" id="contactForm" novalidate>
+    <input type="text" id="name" placeholder="Name" required>
+    <span class="error" id="nameError"></span>
+  
+    <input type="email" id="email" placeholder="Email" required>
+    <span class="error" id="emailError"></span>
+  
+    <textarea id="message" rows="5" placeholder="Message" required></textarea>
+    <span class="error" id="messageError"></span>
+  
+    <button type="submit">send</button>
+  </form>
+</section> 
+<div id="footer"></div>
+<script src="contact.js"></script>
+<script src="menu.js"></script>
+<script src="footer.js"></script>
+</body>
+</html>

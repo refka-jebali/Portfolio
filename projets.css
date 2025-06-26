@@ -1,0 +1,605 @@
+@import url('https://fonts.googleapis.com/css2?family=Ancizar+Sans:ital,wght@0,100..1000;1,100..1000&family=Asap:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", sans-serif;
+}
+body{
+    background: #060607;
+    color: white;
+    min-height: 100vh;
+    padding: 20px;
+}
+/*navigation*/
+#navigation{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    border-bottom: 0.5em solid black;
+    background-color: black;
+    padding: 15px;
+    border-radius: 25px;
+}
+.menu {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    font-weight: bold;
+}
+.menuitem { padding: 1em .5em; }
+.menuitem a{
+ text-decoration: none;/*sert à enlever la décoration par défaut du texte, notamment les soulignements.*/
+ color: #420125;
+ transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+a:hover {
+ transform: scale(1.75);
+ box-shadow: 0 6px 20px rgb(68, 11, 42);
+      }
+.menuitem.cta {
+  background-color: rgb(68, 11, 42);
+  border-radius: 3em;
+  padding: 1em 1.25em;
+}
+.menuitem.cta a{
+  text-decoration: none;
+  color: black;
+}
+/*animation flash*/
+.lightning {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(112, 23, 53, 0.8) 0%, transparent 70%);/*crée un effet circulaire rose foncé → transparent (comme un halo lumineux).*/
+  opacity: 0;
+  pointer-events: none;
+  animation: flash 5s infinite;/*l’animation flash se répète toutes les 5 secondes.*/
+}
+
+.lightning:nth-child(2) {
+  animation-delay: 2s;/*Le 2e éclair commence à 2 secondes.*/
+}
+
+.lightning:nth-child(3) {
+  animation-delay: 4s;
+}
+
+@keyframes flash { /*	Définit les étapes de l’animation*/
+  0%, 97%, 100% {
+    opacity: 0;
+  }
+  98% {
+    opacity: 0.5;
+  }
+  99% {
+    opacity: 1;
+  }
+}
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 50px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+.text_content {
+  max-width: 50%;
+  z-index: 2;
+}
+/*background: linear-gradient(...)	Crée un dégradé comme fond
+-webkit-background-clip: text	Applique le dégradé à la forme du texte
+-webkit-text-fill-color: transparent	Rend le texte transparent pour voir le fond*/
+.text_content h1 {
+  background: linear-gradient(to right, #f583c2, #420125);
+  -webkit-background-clip: text;/* On indique que le fond (background) doit s'appliquer uniquement à la forme des lettres du texte.*/
+  -webkit-text-fill-color: transparent;/*Elle rend le remplissage du texte transparent, pour laisser apparaître le fond à travers les lettres.*/
+  background-clip: text;
+  font-size: 3em;
+  font-weight: bold;
+}
+
+.text_content p {
+  color: #f790cc;
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+/*animation cercle*/
+.cercle {
+  position: relative;/*: sert de repère pour positionner un élément enfant en absolute (ici .circle).*/
+  width: 400px;
+  height: 400px;
+  margin-top: 10px;
+ margin-bottom: 10px;
+}
+
+.circle {
+  position: absolute;/* positionné par rapport à .cercle (grâce à son relative).*/
+  top: 50%;
+  left: 50%;
+  /*bottom: 50%;*/
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #420125, transparent 70%);/*crée un effet de halo lumineux circulaire du centre vers transparent.*/
+  border-radius: 60%;/*forme circulaire (plus doux que 50%, donc un peu ovale).*/
+  box-shadow: 0 0 20px rgba(110, 33, 72, 0.5);
+  transform: translate(-50%, -50% );/*centre parfaitement le cercle dans .cercle.*/
+  overflow: hidden;
+  z-index: 0; /*couche arrière, derrière .photo.*/
+   
+}
+.photo {
+  position: relative;
+  z-index: 1;
+  width: 90%;
+  height: auto;
+ object-fit: cover;
+}
+.bouton {
+  margin-top: 30px;
+  /*z-index: ;*/
+}
+
+.btn {
+  background: rgb(112, 23, 53);
+  border: 2px solid #fff;
+  color: white;
+  border-radius: 50%;
+  padding: 20px 25px;
+  font-size: 1rem;
+  font-weight: bold;/*gras*/
+  cursor: pointer;
+  transition: all 0.3s ease;/* rend le survol (hover) fluide.*/
+  text-decoration: none;/*change la couleur du fond et du texte quand on passe la souris.*/
+}
+
+.btn:hover {
+  background: #ff00aa;
+  color: black;
+}
+.langage{
+    /*background-color: ;*/
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.iconelangage{
+    width: 40px;
+    height: 40px;
+    margin: 0 10px;
+    object-fit: contain; /*définit la façon dont le contenu d'un élément doit s'adapter à son conteneur en utilisant sa largeur et sa hauteur.*/
+}
+.contact-section h1{
+margin-bottom: 40px;
+color: white;
+}
+/*checkbox*/
+.check-form{
+    float: left;/*positionne le formulaire (ou une section de formulaire) à gauche*/
+}
+.custom-checkbox {
+  display: inline-block;/* permet de le styliser tout en restant en ligne.*/
+  position: relative;
+  cursor: pointer;/*rend le curseur interactif (main).*/
+  margin: 10px;/*espace autour de chaque bloc.*/
+  left: 30%;/*: pousse le bloc vers la droite*/
+}
+
+.custom-checkbox input {
+  display: none;/*Cache complètement la vraie case à cocher HTML*/
+}
+/*Ce bloc remplace visuellement la checkbox.*/
+.check-content {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 2px solid #888;
+  border-radius: 8px; /*rend un effet arrondi + visible.*/
+  background-color: #f0f0f0;
+  color: #333;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s;/*animation douce quand on change de couleur.*/
+}
+
+/* Changement de style quand cochée */
+.custom-checkbox input:checked + .check-content {
+  background-color: #af4c96;
+  color: white;
+  border-color: #010701;
+}
+/*formulaire*/
+.contact-section { 
+    background: linear-gradient(to right, #f5dae9, #f583c2, #69063d );
+    padding: 40px 20px;
+    text-align: center;
+    margin-top: 20px;
+    border-radius: 10px;
+
+  }
+  .contact-form {
+    max-width: 500px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .contact-form input,
+  .contact-form textarea {
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  font-size: 20px;
+}
+.contact-form button {
+    background-color: #75033c;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .contact-form button:hover {
+    background-color: #555;
+  }  
+  .error {
+    color: #0a0909;
+    font-size: 12px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    display: block;
+  }
+  /*portfolio*/
+  .portfolio {
+    padding: 50px;
+    background-color: black;
+    border-radius: 20px;
+  }
+  .portfolio h1 {
+  background: linear-gradient(to right, #ff89bb, #50022c);
+  -webkit-background-clip: text;/* On indique que le fond (background) doit s'appliquer uniquement à la forme des lettres du texte.*/
+  -webkit-text-fill-color: transparent;/*Elle rend le remplissage du texte transparent, pour laisser apparaître le fond à travers les lettres.*/
+   background-clip: text;
+   font-size: 2em;
+   font-weight: bold;
+   text-align: center;
+  }
+  
+  .galerie {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 40px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .carte {
+    background: #420125;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.6s ease-out;
+    transform: translateY(50px);
+    opacity: 0.5;      
+    cursor: pointer;
+  }
+  
+  .carte.visible {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
+  .carte:hover {
+    transform: scale(1.15);
+    box-shadow: 0 10px 20px rgba(133, 95, 121, 0.3);
+  }
+  
+  .carte img {
+    width: 100%;
+    height: 250px;
+    object-position: TOP;
+    object-fit: cover;
+    /*aspect-ratio: 0.5;*/
+    transition: transform 0.5s ease;
+  }
+  
+  .carte:hover img {
+    transform: scale(1.1); /* zoom de l'image uniquement */
+  }
+  
+  .carte h3 {
+    margin: 15px;
+    text-align: center;
+    color: black;
+  }
+  
+  .carte p {
+    margin: 0 15px 15px;
+    font-size: 0.95em;
+    color: #050505;
+    text-align: center;
+  }
+  .btn-projet {
+   display: inline-block;
+   justify-content: center;
+   text-align: center;
+   margin-left: 70px;
+   margin-bottom: 20px;
+   padding: 10px 20px;
+   background: linear-gradient(to right, #ff89bb, #a6266b);
+   color: white;
+   text-decoration: none;
+   border-radius: 20px;
+   font-weight: bold;
+   transition: background 0.3s ease;
+}
+
+.btn-projet:hover {
+background: linear-gradient(to right, #a6266b, #ff89bb);
+color: #050003;
+}
+/*Apropos*/
+.aproposmoi{
+    border-radius: 20px;
+    background-color: black;
+
+}
+.aproposmoi h1 {
+    background: linear-gradient(to right,#410224, #eccede);
+   -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+   background-clip: text; /*Utilise un dégradé linéaire comme couleur de texte avec background-clip pour créer un effet moderne.*/
+   font-weight: bold;/*Le texte est gros, gras et aligné à gauche, avec un padding de 40px pour un bon espacement.*/
+   text-align: start;
+   padding: 40px;
+
+}
+ .aproposmoi h2 {
+      text-align: center;
+      padding: 30px;
+      color: #410224;
+      font-weight: bold;
+    }
+    /*Mes competences animation*/
+  .mescompetence{
+     float: right; /*Placée à droite*/
+     top: 70%;
+     width: 400px;
+     height: 400px;
+    }
+    .competences {
+      display: flex;/*Boîte contenant les compétences. Affichée en flex wrap, centrée et espacée avec gap.*/
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .competence {/*Chaque compétence est stylisée comme une étiquette colorée animée.*/
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-weight: bold;
+      opacity: 0;
+      transform: translateY(-50px);
+      animation: drop 0.6s forwards;/*Apparition animée avec @keyframes drop : une transition fluide qui donne un effet de chute depuis le haut.*/
+    }
+
+    .competence:nth-child(1) {/*Chaque compétence a une couleur différente avec un délai d’animation progressif (animation-delay), pour une entrée séquentielle et dynamique.*/
+      background-color: #410224; 
+      color: white;
+      animation-delay: 0.2s;
+    }
+
+    .competence:nth-child(2) {
+      background-color: #2196f3; /* Bleu */
+      color: white;
+      animation-delay: 0.4s;
+    }
+
+    .competence:nth-child(3) {
+      background-color: #4caf50; /* Vert */
+      color: white;
+      animation-delay: 0.6s;
+    }
+
+    .competence:nth-child(4) {
+      background-color: #e91e63; /* Rose */
+      color: white;
+      animation-delay: 0.8s;/*Délai avant que l’animation commence*/
+    }
+
+    .competence:nth-child(5) {
+      background-color: #9c27b0; /* Violet */
+      color: white;
+      animation-delay: 1s;
+    }
+
+    @keyframes drop { /*Apparition animée avec @keyframes drop : une transition fluide qui donne un effet de chute depuis le haut.*/
+      to {
+        opacity: 1;
+        transform: translateY(0);/*La règle @keyframes permet de créer des animations personnalisées en CSS. Elle définit comment les styles d’un élément doivent changer progressivement au fil du temps.*/
+      }
+    }
+    /*Mes services animation*/
+    .services {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+    }
+
+    .card-wrapper {/*Conteneur horizontal avec display: flex pour aligner les cartes, espacées à gauche (margin-left: 30px).*/
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin: 20px 0;
+      margin-left: 30px;
+    }
+
+    .carterl {
+      background-color: rgba(255, 255, 255, 0.05);/*un fond translucide,*/
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 20px 30px;
+      width: 80%;
+      max-width: 600px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .carterl h2 {
+      margin: 0 0 10px 0;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .carterl p {
+      font-size: 16px;
+      color: #ccc;
+    }
+
+    .iconerl {
+      font-size: 24px;
+    }
+
+    .left {
+      justify-content: flex-start;/*Classes utilitaires pour aligner les cartes à gauche ou à droite dans le wrapper (justify-content).*/
+    }
+
+    .right {
+      justify-content: flex-end;/*Classes utilitaires pour aligner les cartes à gauche ou à droite dans le wrapper (justify-content).*/
+    }
+ /*footer*/
+footer{  
+    background-color: black;
+    padding: 30px 20px;
+    text-align: center;
+    margin-top: 40px;
+    border-top: 1px solid black;
+    border-radius: 25px;
+    }
+.footer-content p { /*question */
+  background: linear-gradient(to right, #f5dae9, #f583c2, #69063d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text; /* Pour compatibilité éventuelle */
+  color: transparent;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+ @media (max-width: 900px) { /*responsive*/
+        nav, .menu {
+            flex-direction: column; 
+             text-align: center;
+            border-bottom: 1px solid #ccc;
+          }
+           
+        }
+        @media (max-width:768px) {
+            nav, .menu {
+              display: block;
+               border-bottom: 1px solid #ccc;
+             }   
+             footer {
+               font-size: 0.9rem;
+               padding: 0.7rem;
+             }
+             }
+             /* 📱 Responsive : écrans ≤ 768px */
+@media screen and (max-width: 768px) {
+  .content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 30px 20px;
+  }
+
+  .text_content {
+    max-width: 80%;
+  }
+
+  .text_content h1 {
+    font-size: 2.2em;
+  }
+
+  .cercle {
+    width: 350px;
+    height: 350px;
+    margin: 20px auto;
+  }
+
+  .circle {
+    width: 300px;
+    height: 300px;
+  }
+
+  .photo {
+    width: 90%;
+  }
+
+  .btn {
+    padding: 15px 20px;
+    font-size: 1rem;
+  }
+
+  .langage {
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .iconelangage {
+    width: 35px;
+    height: 35px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .contact-section {
+    padding: 30px 15px;
+    border-radius: 0;
+  }
+
+  .contact-section h1 {
+    font-size: 1.6em;
+  }
+
+  .contact-form {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 16px;
+  }
+
+  .custom-checkbox {
+    left: 0;
+    display: block;
+    margin: 10px auto;
+  }
+
+  .check-form {
+    float: none;
+    text-align: center;
+  }
+}
+@media screen and (max-width: 480px) {
+  .contact-section h1 {
+    font-size: 1.3em;
+  }
+
+  .contact-form button {
+    font-size: 1rem;
+    padding: 12px;
+  }
+
+  .check-content {
+    padding: 8px 15px;
+    font-size: 14px;
+  }
+}
+    
+           
+           
